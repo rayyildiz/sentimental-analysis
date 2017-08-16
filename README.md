@@ -31,7 +31,7 @@ Google Natural API is free for first 5000 request per month.
 
 Run
 ---
-You need to define an envripment variable ```GOOGLE_APPLICATION_CREDENTIALS``` which points a [Google Credential json ile](https://cloud.google.com/docs/authentication/getting-started). Currently there is file under ```./flux-decd0ff29d60.json```. But if you can run application ```run.sh``` or ```run.bat```, you don't need to set a environment for it. 
+You need to define an environment variable ```GOOGLE_APPLICATION_CREDENTIALS``` which points a [Google Credential json file](https://cloud.google.com/docs/authentication/getting-started). You have enable API and define environment variable to point this file.
 
 
 > $ ./run.sh 
