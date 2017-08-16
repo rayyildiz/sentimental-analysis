@@ -79,7 +79,7 @@ class BootApplicationSpec
     whenReady(responseFuture) { response =>
       val applicationInfoResponseFuture = Unmarshal(response.entity).to[ApplicationInformation]
       whenReady(applicationInfoResponseFuture) { applicationInfo =>
-        applicationInfo.version shouldBe "0.0.1"
+        applicationInfo.version shouldBe "1.0"
       }
     }
   }

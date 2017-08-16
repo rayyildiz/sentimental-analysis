@@ -27,18 +27,18 @@ Recommend version is **0.13.16**
 
 Also you need to install Java 8. More info click [Jdk 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-Google API is free for first 5000 request per month. 
+Google Natural API is free for first 5000 request per month. 
 
 Run
 ---
-You need to define ```GOOGLE_APPLICATION_CREDENTIALS```. Currently there is file under ```./flux-decd0ff29d60.json```. But if you can run application ```run.sh``` or ```run.bat```, you don't need to set a environpment for it. 
+You need to define an envripment variable ```GOOGLE_APPLICATION_CREDENTIALS``` which points a [Google Credential json ile](https://cloud.google.com/docs/authentication/getting-started). Currently there is file under ```./flux-decd0ff29d60.json```. But if you can run application ```run.sh``` or ```run.bat```, you don't need to set a environment for it. 
 
 
 > $ ./run.sh 
 > test
 > 
 > run
-> [info] Running me.rayyildiz.sentiment_analyzer.BootApplication
+> [info] Running com.rayyildiz.sentiment_analyzer.BootApplication
 > [INFO] Server online at http://localhost:8080/
   
 Usage
