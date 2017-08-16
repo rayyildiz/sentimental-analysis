@@ -4,4 +4,4 @@ scala:
   - 2.12.2
   - 2.12.3
 script:
-  - "sbt ++$TRAVIS_SCALA_VERSION compile test"
+  - "sbt ++$TRAVIS_SCALA_VERSION compile"
