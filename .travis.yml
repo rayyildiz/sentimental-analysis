@@ -1,7 +1,32 @@
+<<<<<<< HEAD
 language: scala
-jdk: oraclejdk8
+jdk: 
+  - oraclejdk8
+  - oraclejdk9
 scala:
+  - 2.12.1
   - 2.12.2
   - 2.12.3
+  - 2.12.4
+
 script:
-  - "sbt ++$TRAVIS_SCALA_VERSION compile test"
+  - "sbt ++$TRAVIS_SCALA_VERSION compile"
+
+notifications:
+  email: false
+=======
+language: scala
+jdk: 
+  - oraclejdk8
+  - oraclejdk9
+scala:
+- 2.12.1
+- 2.12.2
+- 2.12.3
+- 2.12.4
+script:
+- sbt ++$TRAVIS_SCALA_VERSION compile
+notifications:
+  slack:
+    secure: nonmA31ToxgXQJ0o+zBiZSav2oyPc8zTKgSrL/PVidv6+5R6V9cDyLDDlaBIDDpqmaTREwiijJ4zPRQTY5NKN2B3+mtjhwu1JfAW5b6u1IxML/EWxPOMYY9Af1p3uonLAhAIz12WUv/6/Wf1y+sPoKl2zZMJvZ2lXUF5A1azAdD+VNdDqsNtfjdEo+3uTT+wUD6zhu7Ie8YR20NJSRn0QGE9rGmo+OVOieCxNjVmR/nF24F/9kWqdKxvDpf5QSyrNKsVGGmxE98nc6HZtFxG82y+dX41go+5r1KNVxMTgaAtLbqZqsWz7JfoEiOxh8EXjwbeUH4QnRn6xgSjBJNXBoPZbCNvNWeQB0PowlBWIH5AHETlEH0MS3yn/ltdv5UwlQYTzFrXTI/hy1wQ8eY+hxAvzbj0ze7ru45z2dv6+yH0YNUaD1NgDPmq4n/mqcNTty4t8ABVodEKSjg2/Ay4I2uHP0+dsDCVbm6KF+pepKhAzc0Ei3/qUn6jDWcANYtQIxD9yqvZ423aFD2MJVvzvjsWXzstLEczFGmsCMOOVKYvgcUU661UVO9SEzSXZmpdeFs9n49f31YSXmAV4TIJZcnKnHpESXv7HSVonx48ts+Wb2OJTU3h2/H5z0XJlMCg2eDbohcNhomZrCNyn9F69wjnIDCEeNSgstSfc1ZuD1s=
+>>>>>>> 1acab68... slack notification support

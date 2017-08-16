@@ -1,46 +1,51 @@
-Data Engineer Interview Project
+Sentimental Analysis with Akka
 ===
 
 Implementation of sentimental analysis by using [Google Natural Language API](https://cloud.google.com/natural-language/)  and [Akka Http](http://akka.io/)
 
-[![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis) 
+[![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
+[![Build status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
+[![Scala Version](https://img.shields.io/badge/scala-2.12.4-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
+[![Akka Version](https://img.shields.io/badge/akka-2.5.8-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.0.11-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![GitHub license](https://img.shields.io/github/license/rayyildiz/sentimental-analysis.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/LICENSE)
 
 
 This project was created for showing usage of:
 
-* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.4)
-* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.0.9)
+* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.8)
+* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.0.11)
 * Dependency Injection in Akka System
-* [Google Natural Language](https://cloud.google.com/natural-language/) And [Translation API](https://cloud.google.com/translate/docs/) 
+* [Google Natural Language](https://cloud.google.com/natural-language/) And [Translation API](https://cloud.google.com/translate/docs/)
 
 Install And Run
 ===
 
-- First of all, create [Google Cloud](https://cloud.google.com/) account and create a project. 
+- First of all, create [Google Cloud](https://cloud.google.com/) account and create a project.
 - You have to enable [Google Natural API](https://cloud.google.com/natural-language/). More information [click here.](https://cloud.google.com/natural-language/docs/getting-started)
 - You have to enable [Google Transalation API](https://cloud.google.com/translate). More information [click here](https://cloud.google.com/translate/docs/getting-started)
 
-Install 
+Install
 ---
 You need install ```sbt``` before . More info and install sbt click [Scala SBT](http://www.scala-sbt.org/0.13/docs/Setup.html)
 Recommend version is **0.13.16**
 
 Also you need to install Java 8. More info click [Jdk 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-Google API is free for first 5000 request per month. 
+Google Natural API is free for first 5000 request per month.
 
 Run
 ---
-You need to define ```GOOGLE_APPLICATION_CREDENTIALS```. Currently there is file under ```./flux-decd0ff29d60.json```. But if you can run application ```run.sh``` or ```run.bat```, you don't need to set a environpment for it. 
+You need to define an environment variable ```GOOGLE_APPLICATION_CREDENTIALS``` which points a [Google Credential json file](https://cloud.google.com/docs/authentication/getting-started). You have enable API and define environment variable to point this file.
 
 
-> $ ./run.sh 
+> $ ./run.sh
 > test
-> 
+>
 > run
-> [info] Running me.rayyildiz.sentiment_analyzer.BootApplication
+> [info] Running com.rayyildiz.sentiment_analyzer.BootApplication
 > [INFO] Server online at http://localhost:8080/
-  
+
 Usage
 ===
 
@@ -51,7 +56,7 @@ Test akka actor model.
 **POST** _http://localhost:8080/ping_ Ping-Pong demo. To test application.
 
 > curl -H "Content-Type: application/json"  -X POST -d '{"message":"hello"}' http://localhost:8080/ping
- 
+
 Health monitor
 ---
 
@@ -94,7 +99,7 @@ Sentimental analysis
 Sentimental detection.
 
 **POST** _http://localhost:8080/api/sentiment_ Sentimental analysis
-   
+
 > curl -H "Content-Type: application/json"  -X POST -d '{"text":"I am happy"}' http://localhost:8080/api/sentiment
 
 Relationship Determination
@@ -116,7 +121,7 @@ Clean, language detection, extraction and sentimental analysis.
 > curl -H "Content-Type: application/json"  -X POST -d '{"text":"Ask not what your country can do for you, ask what you can do for your country."}' http://localhost:8080/api/analysis
 
 
-Alternative 
+Alternative
 ===
 
 You can use docker to run application. Run ```./build_docker.sh``` to build docker image, and ```./run_docker.sh``` to run container.

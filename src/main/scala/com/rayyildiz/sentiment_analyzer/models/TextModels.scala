@@ -18,20 +18,24 @@ case class SentimentWord(text: String)
 
 case class SentimentedSentences(sentence: String, feeling: String, score: Float, magnitude: Float)
 
-case class SentimentedWords(magnitude: Float,
-                            score: Float,
-                            documentFeeling: String,
-                            entities: List[SentimentedSentences])
+case class SentimentedWords(
+  magnitude: Float,
+  score: Float,
+  documentFeeling: String,
+  entities: List[SentimentedSentences]
+)
 
 case class DeterminationRelationWord(text: String)
 
 case class DeterminationSentence(content: String, beginOffset: Int)
 
-case class DeterminationToken(lemma: String,
-                              tag: String,
-                              number: Option[String],
-                              person: Option[String],
-                              mood: Option[String],
-                              tense: Option[String])
+case class DeterminationToken(
+  lemma: String,
+  tag: String,
+  number: Option[String],
+  person: Option[String],
+  mood: Option[String],
+  tense: Option[String]
+)
 
 case class DeterminationRelationResult(sentences: List[DeterminationSentence], tokens: List[DeterminationToken])
