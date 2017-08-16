@@ -1,5 +1,5 @@
 name := "sentimental-analysis"
-organization := "me.rayyildiz"
+organization := "com.rayyildiz"
 version := "1.0"
 
 scalaVersion := "2.12.3"
@@ -38,4 +38,4 @@ assemblyMergeStrategy in assembly := {
 }
 
 test in assembly := {}
-mainClass in assembly := Some("me.rayyildiz.sentiment_analyzer.BootApplication")
+mainClass in assembly := Some("com.rayyildiz.sentiment_analyzer.BootApplication")

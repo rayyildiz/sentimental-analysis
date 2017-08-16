@@ -16,7 +16,9 @@ This project was created for showing usage of:
 Install And Run
 ===
 
-First of all, create Google Cloud account and create a project. Then you have to enable Google Natural API. More information [click here.](https://cloud.google.com/natural-language/docs/getting-started)
+- First of all, create [Google Cloud](https://cloud.google.com/) account and create a project. 
+- You have to enable [Google Natural API](https://cloud.google.com/natural-language/). More information [click here.](https://cloud.google.com/natural-language/docs/getting-started)
+- You have to enable [Google Transalation API](https://cloud.google.com/translate). More information [click here](https://cloud.google.com/translate/docs/getting-started)
 
 Install 
 ---
@@ -120,6 +122,7 @@ Alternative
 You can use docker to run application. Run ```./build_docker.sh``` to build docker image, and ```./run_docker.sh``` to run container.
 More info click [https://docs.docker.com/engine/installation/](https://docs.docker.com/engine/installation/)
 
+Note: Building docker waits for a file like ```flux-decd0ff29d60.json```. For details look at [Google Application Default Credentials](https://developers.google.com/identity/protocols/application-default-credentials) page.
 
 Known Issues:
 ===
