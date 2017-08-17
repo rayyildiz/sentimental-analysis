@@ -1,4 +1,4 @@
-Data Engineer Interview Project
+Sentimental Analysis with Akka
 ===
 
 Implementation of sentimental analysis by using [Google Natural Language API](https://cloud.google.com/natural-language/)  and [Akka Http](http://akka.io/)
