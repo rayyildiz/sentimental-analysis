@@ -4,7 +4,7 @@ version := "1.0"
 
 scalaVersion := "2.12.3"
 
-val akkaV = "2.5.4"
+val akkaV = "2.4.19"
 val akkaHttpV = "10.0.9"
 
 crossScalaVersions := Seq("2.12.0", "2.12.1", "2.12.2")
