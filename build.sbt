@@ -2,10 +2,10 @@ name := "sentimental-analysis"
 organization := "com.rayyildiz"
 version := "1.0"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.2"
 
 val akkaV = "2.4.19"
-val akkaHttpV = "10.0.9"
+val akkaHttpV = "10.0.10"
 
 crossScalaVersions := Seq("2.12.0", "2.12.1", "2.12.2")
 
