@@ -12,7 +12,7 @@ status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](
 This project was created for showing usage of:
 
 * [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.4.19)
-* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.0.9)
+* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.0.10)
 * Dependency Injection in Akka System
 * [Google Natural Language](https://cloud.google.com/natural-language/) And [Translation API](https://cloud.google.com/translate/docs/)
 
