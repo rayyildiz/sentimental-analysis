@@ -3,10 +3,8 @@ Sentimental Analysis with Akka
 
 Implementation of sentimental analysis by using [Google Natural Language API](https://cloud.google.com/natural-language/)  and [Akka Http](http://akka.io/)
 
-[![Build
-Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
-[![Build
-status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
+[![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
+[![Build status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
 
 
 This project was created for showing usage of:
