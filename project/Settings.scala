@@ -29,7 +29,7 @@ object Settings {
     publishArtifact in Test := false,
     publishMavenStyle := true,
     licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-    homepage := Some(url("https://github.com/marufaytekin/lsh-spark")),
+    homepage := Some(url("https://github.com/rayyildiz/sentimental-analysis")),
     scmInfo := Some(
       ScmInfo(
         url("http://github.com/rayyildiz/sentimental-analysis"),
