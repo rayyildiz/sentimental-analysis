@@ -4,7 +4,7 @@ object Dependencies {
 
   lazy val version = new {
     val scalaTest = "3.0.3"
-    val akka = "2.4.19"
+    val akka = "2.5.6"
     val akkaHttp = "10.0.10"
     val google =  "0.20.2-beta"
   }
