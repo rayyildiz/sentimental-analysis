@@ -11,5 +11,5 @@ package object actors {
     def getGoogleCredentials: GoogleCredentials = {
       GoogleCredentials.fromStream(ClassLoader.getSystemResourceAsStream("./flux-decd0ff29d60.json"))
     }
-    */
+ */
 }

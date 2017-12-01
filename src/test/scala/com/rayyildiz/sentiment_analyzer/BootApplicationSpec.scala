@@ -14,7 +14,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
 class BootApplicationSpec
-  extends FlatSpec
+    extends FlatSpec
     with ScalaFutures
     with BeforeAndAfterAll
     with Matchers

@@ -8,8 +8,8 @@ object Settings {
   lazy val settings = Seq(
     organization := "com.rayyildiz",
     version := "1.0." + sys.props.getOrElse("buildNumber", default = "0-SNAPSHOT"),
-    scalaVersion := "2.12.3",
-    crossScalaVersions := Seq("2.12.0", "2.12.1", "2.12.2"),
+    scalaVersion := "2.12.4",
+    crossScalaVersions := Seq("2.12.0", "2.12.1", "2.12.2", "2.12.3"),
     publishMavenStyle := true,
     publishArtifact in Test := false,
     assemblyMergeStrategy in assembly := {
