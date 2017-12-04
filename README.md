@@ -5,8 +5,9 @@ Implementation of sentimental analysis by using [Google Natural Language API](ht
 
 [![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
 [![Build status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
-[![Akka Version](https://img.shields.io/badge/akka-2.5.7-blue.svg)](#)
-[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.0.11-blue.svg)](#)
+[![Scala Version](https://img.shields.io/badge/scala-2.12.4-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
+[![Akka Version](https://img.shields.io/badge/akka-2.5.7-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.0.11-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
 [![GitHub license](https://img.shields.io/github/license/rayyildiz/sentimental-analysis.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/LICENSE)
 
 
