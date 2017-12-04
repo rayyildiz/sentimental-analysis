@@ -1,0 +1,22 @@
+{
+    "command": "sbt",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": ["compile"] 
+        },{
+            "taskName": "test",
+            "args": [
+                "test"
+            ]
+        },{
+            "taskName": "run",
+            "args": [
+                "run"
+            ]
+        }
+    ]
+}
