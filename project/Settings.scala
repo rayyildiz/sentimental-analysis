@@ -1,7 +1,7 @@
 import sbt.Keys._
 import sbt._
 import sbtassembly.AssemblyKeys._
-import sbtassembly.AssemblyPlugin.autoImport.{MergeStrategy, assemblyMergeStrategy}
+import sbtassembly.AssemblyPlugin.autoImport.{assemblyMergeStrategy, MergeStrategy}
 import sbtassembly.PathList
 
 object Settings {
@@ -13,9 +13,9 @@ object Settings {
     publishMavenStyle := true,
     publishArtifact in Test := false,
     assemblyMergeStrategy in assembly := {
-      case PathList("META-INF", xs@_ *) => MergeStrategy.discard
-      case PathList("reference.conf") => MergeStrategy.concat
-      case x => MergeStrategy.first
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case PathList("reference.conf")    => MergeStrategy.concat
+      case x                             => MergeStrategy.first
     }
   )
 

@@ -7,22 +7,24 @@ import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
 import com.google.inject.Guice
 import com.rayyildiz.sentiment_analyzer.modules.{AkkaModule, ConfigModule}
+import com.typesafe.config.Config
 
 import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 
 object BootApplication extends App {
-  val hostAddress = "localhost"
-  val port = 8080
 
   val injector = Guice.createInjector(
     new ConfigModule(),
     new AkkaModule()
   )
 
+  val config = injector.getInstance(classOf[Config])
+  val hostAddress = config.getString("app.http.host")
+  val port = config.getInt("app.http.port")
+
   implicit val system: ActorSystem = injector.getInstance(classOf[ActorSystem])
   implicit val executionContext: ExecutionContext = injector.getInstance(classOf[ExecutionContext])
-  // injector.getInstance(classOf[ExecutionContext])
   implicit val materializer: ActorMaterializer = injector.getInstance(classOf[ActorMaterializer])
   implicit val dispatcher = system.dispatcher
 
@@ -36,11 +38,9 @@ object BootApplication extends App {
 
   bindingFuture.onComplete {
     case Success(_) =>
-      logger.info(s"Server online at http://$hostAddress:$port/")
+      logger.info("Server online at http://{}:{}/", hostAddress, port)
     case Failure(e) =>
-      logger.error(e, s"Failed to open akak-http on http://$hostAddress:$port/")
+      logger.error(e, "Failed to open akka-http on http://{}:{}/", hostAddress, port)
       system.terminate()
   }
-  // restServer.startServer(host, port)
-
 }

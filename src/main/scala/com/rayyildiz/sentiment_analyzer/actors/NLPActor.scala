@@ -46,7 +46,6 @@ class NLPActor extends Actor {
           magnitude = sentiment.getMagnitude,
           feeling = feelingText
         )
-
       }.toList
 
       val feelingText: String = if (documentSentiment.getScore > 0) "POSITIVE" else "NEGATIVE"
