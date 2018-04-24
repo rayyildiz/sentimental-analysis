@@ -5,16 +5,16 @@ Implementation of sentimental analysis by using [Google Natural Language API](ht
 
 [![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
 [![Build status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
-[![Scala Version](https://img.shields.io/badge/scala-2.12.4-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
-[![Akka Version](https://img.shields.io/badge/akka-2.5.8-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
-[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.0.11-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Scala Version](https://img.shields.io/badge/scala-2.12.5-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
+[![Akka Version](https://img.shields.io/badge/akka-2.5.12-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.1.1-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
 [![GitHub license](https://img.shields.io/github/license/rayyildiz/sentimental-analysis.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/LICENSE)
 
 
 This project was created for showing usage of:
 
-* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.8)
-* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.0.11)
+* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.12)
+* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.1.1)
 * Dependency Injection in Akka System
 * [Google Natural Language](https://cloud.google.com/natural-language/) And [Translation API](https://cloud.google.com/translate/docs/)
 
@@ -28,7 +28,7 @@ Install And Run
 Install
 ---
 You need install ```sbt``` before . More info and install sbt click [Scala SBT](http://www.scala-sbt.org/0.13/docs/Setup.html)
-Recommend version is **0.13.16**
+Recommend version is **1.0.4**
 
 Also you need to install Java 8. More info click [Jdk 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 

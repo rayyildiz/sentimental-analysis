@@ -3,9 +3,9 @@ import sbt._
 object Dependencies {
 
   lazy val version = new {
-    val scalaTest = "3.0.4"
-    val akka = "2.5.8"
-    val akkaHttp = "10.0.11"
+    val scalaTest = "3.0.5"
+    val akka = "2.5.12"
+    val akkaHttp = "10.1.1"
     val google = "0.20.2-beta"
   }
 
