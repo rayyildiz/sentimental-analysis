@@ -13,6 +13,7 @@ build_script:
     - sbt ++2.12.3 clean compile
     - sbt ++2.12.4 clean compile
     - sbt ++2.12.5 clean compile
+    - sbt ++2.12.6 clean compile
 cache:
     - C:\sbt\
     - C:\Users\appveyor\.m2
