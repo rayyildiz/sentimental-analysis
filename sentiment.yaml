@@ -32,11 +32,11 @@ spec:
             - name: app.http.host
               value: "0.0.0.0"
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: /apps/google_api.json
+              value: /apps/conf/google_api.json
 
           workingDir: /apps
           volumeMounts:
-            - mountPath: /apps
+            - mountPath: /apps/conf
               name: config
       volumes:
         - name: config
