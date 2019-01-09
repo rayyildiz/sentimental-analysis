@@ -6,8 +6,7 @@ object Dependencies {
     val scalaTest = "3.0.5"
     val akka = "2.5.19"
     val akkaHttp = "10.1.7"
-    val google = "0.20.2-beta"
-    val googleTranslate = "1.55.0"
+    val google = "1.55.0"
   }
 
   lazy val library = new {
@@ -21,8 +20,8 @@ object Dependencies {
     val scalaGuice = "net.codingwell" %% "scala-guice" % "4.2.2"
     val logbackClassic = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
-    val soup = "org.jsoup" % "jsoup" % "1.11.2"
-    val googleTranslate = "com.google.cloud" % "google-cloud-translate" % version.googleTranslate
+    val soup = "org.jsoup" % "jsoup" % "1.11.3"
+    val googleTranslate = "com.google.cloud" % "google-cloud-translate" % version.google
     val googleLanguage = "com.google.cloud" % "google-cloud-language" % version.google
 
     val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % version.akka % Test

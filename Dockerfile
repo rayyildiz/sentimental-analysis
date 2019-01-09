@@ -1,13 +1,11 @@
 FROM rayyildiz/java8:jre
 
-RUN mkdir -p /app/conf
+WORKDIR /apps
 
-ADD target/scala-2.12/sentimental-analysis-assembly-1.0.jar /app/analysis.jar
-
-ADD flux-decd0ff29d60.json  /app/conf/flux-decd0ff29d60.json
-
-RUN export GOOGLE_APPLICATION_CREDENTIALS="/app/conf/flux-decd0ff29d60.json"
+ADD target/scala-2.12/sentimental-analysis-assembly-1.1.0-SNAPSHOT.jar /apps/analysis.jar
 
 EXPOSE 8080
 
-CMD ["/usr/bin/java","-jar","/app/analysis.jar"]
+ENV GOOGLE_APPLICATION_CREDENTIALS=/apps/google_api.json
+
+CMD ["/usr/bin/java","-jar","/apps/analysis.jar"]

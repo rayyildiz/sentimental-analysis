@@ -1,12 +1,13 @@
 package com.rayyildiz.sentiment_analyzer.controllers
 
-import javax.inject.{Inject, Singleton}
-
 import akka.actor.{ActorRef, ActorSystem}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.rayyildiz.sentiment_analyzer.actors.{CleanTextActor, LanguageDetectionActor, NLPActor}
+import com.google.cloud.language.v1.LanguageServiceClient
+import com.google.cloud.translate.{Translate, TranslateOptions}
+import com.rayyildiz.sentiment_analyzer.actors.NLPActor
 import com.rayyildiz.sentiment_analyzer.models._
+import javax.inject.{Inject, Singleton}
 
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
@@ -15,9 +16,11 @@ import scala.concurrent.{ExecutionContext, Future}
 class SentimentalController @Inject()(
   private val system: ActorSystem
 )(implicit val executionContext: ExecutionContext) {
+  lazy val languageApi: LanguageServiceClient = LanguageServiceClient.create()
+  lazy val translateApi: Translate = TranslateOptions.getDefaultInstance.getService()
 
   def analysis(text: String): Future[AnalysisResponse] = {
-    implicit val timeout = Timeout(120 seconds)
+    implicit val timeout = Timeout(20 seconds)
     val response = for {
       c <- clean(text)
       d <- detect(text)
@@ -32,34 +35,36 @@ class SentimentalController @Inject()(
   }
 
   def clean(text: String): Future[CleanTextResponse] = {
-    implicit val timeout = Timeout(5 seconds)
-    val cleanTextActorRef: ActorRef = system.actorOf(CleanTextActor.props)
-    (cleanTextActorRef ? text).mapTo[CleanedText].map(cleanedText => CleanTextResponse(cleanedText.text))
+    implicit val timeout = Timeout(2 seconds)
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
+
+    (nlp ? CleanText(text)).mapTo[CleanedText].map(cleanedText => CleanTextResponse(cleanedText.text))
   }
 
   def detect(text: String): Future[DetectionResponse] = {
-    implicit val timeout = Timeout(20 seconds)
+    implicit val timeout = Timeout(3 seconds)
 
-    val detectionActorRef: ActorRef = system.actorOf(LanguageDetectionActor.props)
-    (detectionActorRef ? text)
-      .mapTo[LanguageDetection]
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
+    (nlp ? LanguageDetectText(text))
+      .mapTo[LanguageDetectedText]
       .map(langDetect => DetectionResponse(langDetect.language, langDetect.confidence))
   }
 
   def extract(text: String): Future[ExtractResponse] = {
-    implicit val timeout = Timeout(45 seconds)
-    val nlpActor: ActorRef = system.actorOf(NLPActor.props)
+    implicit val timeout = Timeout(5 seconds)
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
 
-    (nlpActor ? ExtractWord(text))
+    (nlp ? ExtractWord(text))
       .mapTo[ExtractedWords]
       .map(word => ExtractResponse(word.entities))
   }
 
   def sentiment(text: String): Future[SentimentResponse] = {
-    implicit val timeout = Timeout(60 seconds)
-    val nlpActor: ActorRef = system.actorOf(NLPActor.props)
+    implicit val timeout = Timeout(5 seconds)
 
-    (nlpActor ? SentimentWord(text)).mapTo[SentimentedWords].map { sentiment =>
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
+
+    (nlp ? SentimentWord(text)).mapTo[SentimentedWords].map { sentiment =>
       SentimentResponse(
         magnitude = sentiment.magnitude,
         score = sentiment.score,
@@ -70,10 +75,10 @@ class SentimentalController @Inject()(
   }
 
   def determination(text: String): Future[DeterminationResponse] = {
-    implicit val timeout = Timeout(90 seconds)
-    val nlpActor: ActorRef = system.actorOf(NLPActor.props)
+    implicit val timeout = Timeout(5 seconds)
 
-    (nlpActor ? DeterminationRelationWord(text))
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
+    (nlp ? DeterminationRelationWord(text))
       .mapTo[DeterminationRelationResult]
       .map(det => DeterminationResponse(det.sentences, det.tokens))
   }

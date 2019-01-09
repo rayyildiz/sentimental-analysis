@@ -1,13 +1,14 @@
 package com.rayyildiz.sentiment_analyzer.models
 
-// Clean Text
+// Clean text
+case class CleanText(text:String)
+
 case class CleanedText(text: String)
 
-// Language Check
-case class LanguageDetection(language: String, confidence: Float)
 
 // Extract Important Words
 case class ExtractWord(text: String)
+
 
 case class ExtractedEntity(word: String, entityType: String, salience: Float)
 
@@ -24,6 +25,11 @@ case class SentimentedWords(
   documentFeeling: String,
   entities: List[SentimentedSentences]
 )
+
+// Language detect text
+case class LanguageDetectText(text:String)
+
+case class LanguageDetectedText(language: String, confidence: Float)
 
 case class DeterminationRelationWord(text: String)
 

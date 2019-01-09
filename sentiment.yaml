@@ -3,7 +3,8 @@ kind: ConfigMap
 metadata:
   name: google-config
 data:
-  GOOGLE_APPLICATION_CREDENTIALS: ""
+  google_api.json: |-
+    {}
 
 ---
 apiVersion: apps/v1
@@ -28,15 +29,27 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: GOOGLE_APP_NAME
-              value: "flux-1102"
             - name: app.http.host
               value: "0.0.0.0"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /apps/google_api.json
+
+          workingDir: /apps
+          volumeMounts:
+            - mountPath: /apps
+              name: config
+      volumes:
+        - name: config
+          configMap:
+            name: google-config
+            items:
+              - key: google_api.json
+                path: google_api.json
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sentiment_analysis
+  name: sentimentsrv
 spec:
   selector:
     app: sentiment
