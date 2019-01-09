@@ -5,16 +5,16 @@ Implementation of sentimental analysis by using [Google Natural Language API](ht
 
 [![Build Status](http://img.shields.io/travis/rayyildiz/sentimental-analysis.svg?style=flat-square)](https://travis-ci.org/rayyildiz/sentimental-analysis)
 [![Build status](https://ci.appveyor.com/api/projects/status/aqlnj4skqgf10lfx?svg=true)](https://ci.appveyor.com/project/rayyildiz/sentimental-analysis)
-[![Scala Version](https://img.shields.io/badge/scala-2.12.6-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
-[![Akka Version](https://img.shields.io/badge/akka-2.5.14-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
-[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.1.3-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Scala Version](https://img.shields.io/badge/scala-2.12.8-red.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/build.sbt)
+[![Akka Version](https://img.shields.io/badge/akka-2.5.19-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
+[![Akka-Http Version](https://img.shields.io/badge/akka--http-10.1.7-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
 [![GitHub license](https://img.shields.io/github/license/rayyildiz/sentimental-analysis.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/LICENSE)
 
 
 This project was created for showing usage of:
 
-* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.12)
-* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.1.1)
+* [Akka Actor model](http://doc.akka.io/docs/akka/current/scala/actors.html) (Version 2.5.19)
+* [Akka Http](http://doc.akka.io/docs/akka-http/current/scala/http/) (Version 10.1.7)
 * Dependency Injection in Akka System
 * [Google Natural Language](https://cloud.google.com/natural-language/) And [Translation API](https://cloud.google.com/translate/docs/)
 

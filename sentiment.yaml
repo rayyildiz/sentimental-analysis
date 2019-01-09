@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: google-config
+data:
+  GOOGLE_APPLICATION_CREDENTIALS: ""
+
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sentiment_analysis
+spec:
+  selector:
+    matchLabels:
+      app: sentiment
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sentiment
+        version: v1
+    spec:
+      containers:
+        - name: sentiment
+          image: rayyildiz/sentiment_analyzer
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GOOGLE_APP_NAME
+              value: "flux-1102"
+            - name: app.http.host
+              value: "0.0.0.0"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentiment_analysis
+spec:
+  selector:
+    app: sentiment
+    version: v1
+  ports:
+    - port: 8080

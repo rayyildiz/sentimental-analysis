@@ -1,6 +1,6 @@
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.8"
 
-lazy val seentimentalAnalysis = (project in file("."))
+lazy val sentimentalAnalysis = (project in file("."))
   .settings(Settings.settings: _*)
   .settings(Settings.publishSettings: _*)
   .settings(Settings.dockerSettings: _*)
