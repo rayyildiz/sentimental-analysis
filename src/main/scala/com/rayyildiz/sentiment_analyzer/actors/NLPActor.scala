@@ -42,7 +42,6 @@ class NLPActor(languageApi: LanguageServiceClient, translateApi: Translate) exte
       case _: NotImplementedError => Resume
       case t: Throwable           => super.supervisorStrategy.decider.applyOrElse(t, (_: Any) => Escalate)
     }
-
   // scalastyle:on magic.number
 }
 

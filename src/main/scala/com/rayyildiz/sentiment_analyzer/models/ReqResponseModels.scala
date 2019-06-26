@@ -15,10 +15,10 @@ case class ExtractResponse(entities: List[ExtractedEntity])
 case class SentimentRequest(text: String)
 
 case class SentimentResponse(
-  magnitude: Float,
-  score: Float,
-  documentFeeling: String,
-  entities: List[SentimentedSentences]
+    magnitude: Float,
+    score: Float,
+    documentFeeling: String,
+    entities: List[SentimentedSentences]
 )
 
 case class DeterminationRequest(text: String)
@@ -28,9 +28,9 @@ case class DeterminationResponse(sentences: List[DeterminationSentence], tokens:
 case class AnalysisRequest(text: String)
 
 case class AnalysisResponse(
-  clean: CleanTextResponse,
-  detect: DetectionResponse,
-  extract: ExtractResponse,
-  sentiment: SentimentResponse,
-  determination: DeterminationResponse
+    clean: CleanTextResponse,
+    detect: DetectionResponse,
+    extract: ExtractResponse,
+    sentiment: SentimentResponse,
+    determination: DeterminationResponse
 )

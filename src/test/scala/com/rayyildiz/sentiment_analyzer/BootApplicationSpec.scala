@@ -13,12 +13,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-class BootApplicationSpec
-    extends FlatSpec
-    with ScalaFutures
-    with BeforeAndAfterAll
-    with Matchers
-    with JsonSerialization {
+class BootApplicationSpec extends FlatSpec with ScalaFutures with BeforeAndAfterAll with Matchers with JsonSerialization {
   BootApplication.main(Array())
 
   implicit val system = BootApplication.system
@@ -41,8 +36,8 @@ class BootApplicationSpec
       .runWith(Sink.head)
 
   "The Boot Application" should "return Pong on POST /ping" in {
-    val ping = Ping("Hello")
-    val requestEntity = Await.result(Marshal(ping).to[RequestEntity], Duration.Inf)
+    val ping           = Ping("Hello")
+    val requestEntity  = Await.result(Marshal(ping).to[RequestEntity], Duration.Inf)
     val responseFuture = sendRequest(HttpRequest(uri = "/ping", method = HttpMethods.POST, entity = requestEntity))
     whenReady(responseFuture) { response =>
       val pongFuture = Unmarshal(response.entity).to[Pong]
@@ -85,8 +80,8 @@ class BootApplicationSpec
   }
 
   it should "clean text properly on POST /api/clean" in {
-    val cleanReq = CleanTextRequest("<p><a href='http://example.com/' onclick='stealCookies()'>Link</a></p>")
-    val requestEntity = Await.result(Marshal(cleanReq).to[RequestEntity], Duration.Inf)
+    val cleanReq       = CleanTextRequest("<p><a href='http://example.com/' onclick='stealCookies()'>Link</a></p>")
+    val requestEntity  = Await.result(Marshal(cleanReq).to[RequestEntity], Duration.Inf)
     val responseFuture = sendRequest(HttpRequest(uri = "/api/clean", method = HttpMethods.POST, entity = requestEntity))
 
     whenReady(responseFuture) { response =>
@@ -134,7 +129,7 @@ class BootApplicationSpec
   }
 
   it should "extract words on POST /api/extract" in {
-    val extractReq = ExtractRequest("President Obama is speaking at the White House.")
+    val extractReq    = ExtractRequest("President Obama is speaking at the White House.")
     val requestEntity = Await.result(Marshal(extractReq).to[RequestEntity], Duration.Inf)
     val responseFuture =
       sendRequest(HttpRequest(uri = "/api/extract", method = HttpMethods.POST, entity = requestEntity))
@@ -183,7 +178,7 @@ class BootApplicationSpec
   }
 
   it should "All analysis together on POST /api/analysis" in {
-    val request = AnalysisRequest("Ask not what your country can do for you, ask what you can do for your country.")
+    val request       = AnalysisRequest("Ask not what your country can do for you, ask what you can do for your country.")
     val requestEntity = Await.result(Marshal(request).to[RequestEntity], Duration.Inf)
     val responseFuture =
       sendRequest(HttpRequest(uri = "/api/analysis", method = HttpMethods.POST, entity = requestEntity))

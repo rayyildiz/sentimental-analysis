@@ -7,26 +7,25 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import akka.stream.ActorMaterializer
 import com.rayyildiz.sentiment_analyzer.models.{ErrorMessage, JsonSerialization}
-import com.rayyildiz.sentiment_analyzer.routes.{MiddlewareRoutes, RestRoutes, SwaggerRoutes}
+import com.rayyildiz.sentiment_analyzer.routes.{MiddlewareRoutes, RestRoutes}
 
 import scala.concurrent.ExecutionContext
 
 class Routes @Inject()(
-  private val middlewareRoutes: MiddlewareRoutes,
-  private val swaggerRoutes: SwaggerRoutes,
-  private val restRoutes: RestRoutes
+    private val middlewareRoutes: MiddlewareRoutes,
+    private val restRoutes: RestRoutes
 )(private implicit val materializer: ActorMaterializer, implicit val executionContext: ExecutionContext)
     extends JsonSerialization {
 
   val exceptionHandler = ExceptionHandler {
     case t: Throwable => {
-      extractUri { uri =>
+      extractUri { _ =>
         complete(ErrorMessage(StatusCodes.InternalServerError.intValue, t.getMessage))
       }
     }
   }
 
-  val jsonRejectionHandler = RejectionHandler
+  val jsonRejectionHandler: RejectionHandler = RejectionHandler
     .newBuilder()
     .handleAll[Rejection] { rejections => (context: RequestContext) =>
       {
@@ -44,7 +43,7 @@ class Routes @Inject()(
   def apply(): Route =
     handleRejections(jsonRejectionHandler) {
       handleExceptions(exceptionHandler) {
-        middlewareRoutes() ~ restRoutes() //~swaggerRoutes()
+        middlewareRoutes() ~ restRoutes()
       }
     }
 }

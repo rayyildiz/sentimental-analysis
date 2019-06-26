@@ -9,8 +9,8 @@ import com.rayyildiz.sentiment_analyzer.models._
 
 @Singleton
 class RestRoutes @Inject()(
-  private val applicationController: ApplicationController,
-  private val sentimentalController: SentimentalController
+    private val applicationController: ApplicationController,
+    private val sentimentalController: SentimentalController
 ) extends JsonSerialization {
 
   def apply(): Route =
