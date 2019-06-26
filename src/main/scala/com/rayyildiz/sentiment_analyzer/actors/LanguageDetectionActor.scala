@@ -2,9 +2,10 @@ package com.rayyildiz.sentiment_analyzer.actors
 
 import akka.actor.{Actor, ActorRef}
 import com.google.cloud.translate.Translate
-import com.rayyildiz.sentiment_analyzer.models.LanguageDetectedText
 
 class LanguageDetectionActor(client: Translate, reply: ActorRef) extends Actor {
+  import LanguageDetectionActor._
+
   override def receive: Receive = {
     case text: String =>
       val detection = client.detect(text)
@@ -13,4 +14,9 @@ class LanguageDetectionActor(client: Translate, reply: ActorRef) extends Actor {
     case _ => sender() ! "Not implemented for other types"
 
   }
+}
+
+object LanguageDetectionActor {
+  case class LanguageDetectedText(language: String, confidence: Float)
+
 }

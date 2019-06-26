@@ -1,9 +1,11 @@
 package com.rayyildiz.sentiment_analyzer
 
+import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.marshalling.Marshal
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, RequestEntity, StatusCodes}
 import akka.http.scaladsl.unmarshalling.Unmarshal
+import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{Sink, Source}
 import com.rayyildiz.sentiment_analyzer.models._
 import org.scalatest.concurrent.ScalaFutures
@@ -16,13 +18,13 @@ import scala.concurrent.duration.Duration
 class BootApplicationSpec extends FlatSpec with ScalaFutures with BeforeAndAfterAll with Matchers with JsonSerialization {
   BootApplication.main(Array())
 
-  implicit val system = BootApplication.system
+  implicit val system: ActorSystem = BootApplication.system
 
   import system.dispatcher
 
-  implicit val materializer = BootApplication.materializer
+  implicit val materializer: ActorMaterializer = BootApplication.materializer
   // scalastyle:off magic.number
-  implicit val defaultPatience = PatienceConfig(timeout = Span(10, Seconds), interval = Span(1000, Millis))
+  implicit val defaultPatience: PatienceConfig = PatienceConfig(timeout = Span(10, Seconds), interval = Span(1000, Millis))
   // scalastyle:on magic.number
 
   override def afterAll(): Unit = system.terminate()
@@ -186,7 +188,7 @@ class BootApplicationSpec extends FlatSpec with ScalaFutures with BeforeAndAfter
     whenReady(responseFuture) { response =>
       val analysisResponseFuture = Unmarshal(response.entity).to[AnalysisResponse]
       whenReady(analysisResponseFuture) { analysisResponse =>
-        analysisResponse.clean.text.size should be > 77
+        analysisResponse.clean.text.length should be > 77
         analysisResponse.detect.language shouldBe "en"
         analysisResponse.extract.entities.size shouldBe 2
         analysisResponse.sentiment.documentFeeling shouldBe "NEGATIVE"

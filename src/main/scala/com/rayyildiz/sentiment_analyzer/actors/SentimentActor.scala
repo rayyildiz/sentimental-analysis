@@ -2,11 +2,11 @@ package com.rayyildiz.sentiment_analyzer.actors
 import akka.actor.{Actor, ActorRef}
 import com.google.cloud.language.v1.Document.Type
 import com.google.cloud.language.v1.{Document, LanguageServiceClient}
-import com.rayyildiz.sentiment_analyzer.models.{SentimentedSentences, SentimentedWords}
 
 import scala.collection.JavaConverters._
 
 class SentimentActor(client: LanguageServiceClient, reply: ActorRef) extends Actor {
+  import SentimentActor._
 
   override def receive: Receive = {
     case text: String =>
@@ -38,4 +38,16 @@ class SentimentActor(client: LanguageServiceClient, reply: ActorRef) extends Act
     case _ => sender() ! "Not implemented for other types"
   }
 
+}
+
+object SentimentActor {
+
+  case class SentimentedSentences(sentence: String, feeling: String, score: Float, magnitude: Float)
+
+  case class SentimentedWords(
+      magnitude: Float,
+      score: Float,
+      documentFeeling: String,
+      entities: List[SentimentedSentences]
+  )
 }

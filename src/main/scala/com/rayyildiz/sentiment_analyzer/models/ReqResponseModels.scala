@@ -1,5 +1,9 @@
 package com.rayyildiz.sentiment_analyzer.models
 
+import com.rayyildiz.sentiment_analyzer.actors.ExtractorActor.ExtractedEntity
+import com.rayyildiz.sentiment_analyzer.actors.RelationActor.DeterminationSentence
+import com.rayyildiz.sentiment_analyzer.actors.SentimentActor.SentimentedSentences
+
 case class CleanTextRequest(text: String)
 
 case class CleanTextResponse(text: String)
