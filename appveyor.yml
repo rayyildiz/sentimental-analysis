@@ -8,12 +8,7 @@ install:
     - cmd: SET PATH=C:\sbt\bin;%JAVA_HOME%\bin;%PATH%
     - cmd: SET SBT_OPTS=-XX:MaxPermSize=2g -Xmx4g
 build_script:
-    - sbt ++2.12.1 clean compile
-    - sbt ++2.12.2 clean compile
-    - sbt ++2.12.3 clean compile
-    - sbt ++2.12.4 clean compile
-    - sbt ++2.12.5 clean compile
-    - sbt ++2.12.6 clean compile
+    - sbt ++2.12.8 clean compile
 cache:
     - C:\sbt\
     - C:\Users\appveyor\.m2

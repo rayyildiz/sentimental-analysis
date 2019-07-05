@@ -46,7 +46,7 @@ object Settings {
 
   lazy val dockerSettings: Seq[Def.Setting[_]] = Seq(
     dockerfile in docker := {
-      val artifact: File = assembly.value
+      val artifact: File     = assembly.value
       val artifactTargetPath = s"/app/${artifact.name}"
 
       new Dockerfile {

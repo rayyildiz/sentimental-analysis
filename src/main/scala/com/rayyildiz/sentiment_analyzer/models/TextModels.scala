@@ -1,47 +1,28 @@
 package com.rayyildiz.sentiment_analyzer.models
 
-// Clean text
-case class CleanText(text:String)
+object TextModels {
 
-case class CleanedText(text: String)
+  // Clean text
+  case class CleanText(text: String)
 
+  // Extract Important Words
+  case class ExtractWord(text: String)
 
-// Extract Important Words
-case class ExtractWord(text: String)
+  // Extract Words Indicating Sentiment
+  case class SentimentWord(text: String)
 
+  // Language detect text
+  case class LanguageDetectText(text: String)
 
-case class ExtractedEntity(word: String, entityType: String, salience: Float)
+  case class DeterminationRelationWord(text: String)
 
-case class ExtractedWords(entities: List[ExtractedEntity])
+  case class DeterminationToken(
+      lemma: String,
+      tag: String,
+      number: Option[String],
+      person: Option[String],
+      mood: Option[String],
+      tense: Option[String]
+  )
 
-// Extract Words Indicating Sentiment
-case class SentimentWord(text: String)
-
-case class SentimentedSentences(sentence: String, feeling: String, score: Float, magnitude: Float)
-
-case class SentimentedWords(
-  magnitude: Float,
-  score: Float,
-  documentFeeling: String,
-  entities: List[SentimentedSentences]
-)
-
-// Language detect text
-case class LanguageDetectText(text:String)
-
-case class LanguageDetectedText(language: String, confidence: Float)
-
-case class DeterminationRelationWord(text: String)
-
-case class DeterminationSentence(content: String, beginOffset: Int)
-
-case class DeterminationToken(
-  lemma: String,
-  tag: String,
-  number: Option[String],
-  person: Option[String],
-  mood: Option[String],
-  tense: Option[String]
-)
-
-case class DeterminationRelationResult(sentences: List[DeterminationSentence], tokens: List[DeterminationToken])
+}

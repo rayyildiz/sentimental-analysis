@@ -1,36 +1,44 @@
 package com.rayyildiz.sentiment_analyzer.models
 
-case class CleanTextRequest(text: String)
+import com.rayyildiz.sentiment_analyzer.models.TextModels.DeterminationToken
 
-case class CleanTextResponse(text: String)
+object ReqResponseModels {
 
-case class DetectionRequest(text: String)
+  import com.rayyildiz.sentiment_analyzer.actors.ExtractorActor.ExtractedEntity
+  import com.rayyildiz.sentiment_analyzer.actors.RelationActor.DeterminationSentence
+  import com.rayyildiz.sentiment_analyzer.actors.SentimentActor.SentimentedSentences
+  case class CleanTextRequest(text: String)
 
-case class DetectionResponse(language: String, confidence: Float)
+  case class CleanTextResponse(text: String)
 
-case class ExtractRequest(text: String)
+  case class DetectionRequest(text: String)
 
-case class ExtractResponse(entities: List[ExtractedEntity])
+  case class DetectionResponse(language: String, confidence: Float)
 
-case class SentimentRequest(text: String)
+  case class ExtractRequest(text: String)
 
-case class SentimentResponse(
-  magnitude: Float,
-  score: Float,
-  documentFeeling: String,
-  entities: List[SentimentedSentences]
-)
+  case class ExtractResponse(entities: List[ExtractedEntity])
 
-case class DeterminationRequest(text: String)
+  case class SentimentRequest(text: String)
 
-case class DeterminationResponse(sentences: List[DeterminationSentence], tokens: List[DeterminationToken])
+  case class SentimentResponse(
+      magnitude: Float,
+      score: Float,
+      documentFeeling: String,
+      entities: List[SentimentedSentences]
+  )
 
-case class AnalysisRequest(text: String)
+  case class DeterminationRequest(text: String)
 
-case class AnalysisResponse(
-  clean: CleanTextResponse,
-  detect: DetectionResponse,
-  extract: ExtractResponse,
-  sentiment: SentimentResponse,
-  determination: DeterminationResponse
-)
+  case class DeterminationResponse(sentences: List[DeterminationSentence], tokens: List[DeterminationToken])
+
+  case class AnalysisRequest(text: String)
+
+  case class AnalysisResponse(
+      clean: CleanTextResponse,
+      detect: DetectionResponse,
+      extract: ExtractResponse,
+      sentiment: SentimentResponse,
+      determination: DeterminationResponse
+  )
+}

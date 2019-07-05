@@ -9,7 +9,7 @@ import com.google.inject.Guice
 import com.rayyildiz.sentiment_analyzer.modules.{AkkaModule, ConfigModule}
 import com.typesafe.config.Config
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
 import scala.util.{Failure, Success}
 
 object BootApplication extends App {
@@ -19,14 +19,14 @@ object BootApplication extends App {
     new AkkaModule()
   )
 
-  val config = injector.getInstance(classOf[Config])
+  val config      = injector.getInstance(classOf[Config])
   val hostAddress = config.getString("app.http.host")
-  val port = config.getInt("app.http.port")
+  val port        = config.getInt("app.http.port")
 
-  implicit val system: ActorSystem = injector.getInstance(classOf[ActorSystem])
-  implicit val executionContext: ExecutionContext = injector.getInstance(classOf[ExecutionContext])
-  implicit val materializer: ActorMaterializer = injector.getInstance(classOf[ActorMaterializer])
-  implicit val dispatcher = system.dispatcher
+  implicit val system: ActorSystem                  = injector.getInstance(classOf[ActorSystem])
+  implicit val executionContext: ExecutionContext   = injector.getInstance(classOf[ExecutionContext])
+  implicit val materializer: ActorMaterializer      = injector.getInstance(classOf[ActorMaterializer])
+  implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
 
   val routes: Route = {
     val routes = injector.getInstance(classOf[Routes])

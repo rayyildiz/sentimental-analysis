@@ -1,16 +1,17 @@
 package com.rayyildiz.sentiment_analyzer.routes
 
 import javax.inject.{Inject, Singleton}
-
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import com.rayyildiz.sentiment_analyzer.controllers.{ApplicationController, SentimentalController}
+import com.rayyildiz.sentiment_analyzer.models.ApplicationModels._
 import com.rayyildiz.sentiment_analyzer.models._
+import com.rayyildiz.sentiment_analyzer.models.ReqResponseModels._
 
 @Singleton
 class RestRoutes @Inject()(
-  private val applicationController: ApplicationController,
-  private val sentimentalController: SentimentalController
+    private val applicationController: ApplicationController,
+    private val sentimentalController: SentimentalController
 ) extends JsonSerialization {
 
   def apply(): Route =
