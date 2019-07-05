@@ -1,13 +1,13 @@
 package com.rayyildiz.sentiment_analyzer
 
-import javax.inject.Inject
-
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import akka.stream.ActorMaterializer
-import com.rayyildiz.sentiment_analyzer.models.{ErrorMessage, JsonSerialization}
+import com.rayyildiz.sentiment_analyzer.models.ApplicationModels.ErrorMessage
+import com.rayyildiz.sentiment_analyzer.models.JsonSerialization
 import com.rayyildiz.sentiment_analyzer.routes.{MiddlewareRoutes, RestRoutes}
+import javax.inject.Inject
 
 import scala.concurrent.ExecutionContext
 

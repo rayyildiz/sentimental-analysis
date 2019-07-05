@@ -4,9 +4,13 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import com.rayyildiz.sentiment_analyzer.actors.ExtractorActor.ExtractedEntity
 import com.rayyildiz.sentiment_analyzer.actors.RelationActor.DeterminationSentence
 import com.rayyildiz.sentiment_analyzer.actors.SentimentActor.SentimentedSentences
+import com.rayyildiz.sentiment_analyzer.models.ReqResponseModels._
+import com.rayyildiz.sentiment_analyzer.models.TextModels._
 import spray.json._
 
 trait JsonSerialization extends SprayJsonSupport with DefaultJsonProtocol {
+  import ApplicationModels._
+
   implicit val applicationHealthFormat: RootJsonFormat[ApplicationStatus]           = jsonFormat2(ApplicationStatus)
   implicit val applicationInformationFormat: RootJsonFormat[ApplicationInformation] = jsonFormat2(ApplicationInformation)
 

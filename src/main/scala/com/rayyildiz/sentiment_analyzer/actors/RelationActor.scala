@@ -2,12 +2,12 @@ package com.rayyildiz.sentiment_analyzer.actors
 import akka.actor.{Actor, ActorRef}
 import com.google.cloud.language.v1.Document.Type
 import com.google.cloud.language.v1.{Document, EncodingType, LanguageServiceClient}
-import com.rayyildiz.sentiment_analyzer.models.DeterminationToken
 
 import scala.collection.JavaConverters._
 
 class RelationActor(client: LanguageServiceClient, reply: ActorRef) extends Actor {
   import RelationActor._
+  import com.rayyildiz.sentiment_analyzer.models.TextModels.DeterminationToken
 
   override def receive: Receive = {
     case text: String =>
@@ -37,6 +37,8 @@ class RelationActor(client: LanguageServiceClient, reply: ActorRef) extends Acto
 }
 
 object RelationActor {
+  import com.rayyildiz.sentiment_analyzer.models.TextModels.DeterminationToken
+
   case class DeterminationSentence(content: String, beginOffset: Int)
   case class DeterminationRelationResult(sentences: List[DeterminationSentence], tokens: List[DeterminationToken])
 

@@ -6,7 +6,8 @@ import akka.util.Timeout
 import com.google.cloud.language.v1.LanguageServiceClient
 import com.google.cloud.translate.{Translate, TranslateOptions}
 import com.rayyildiz.sentiment_analyzer.actors._
-import com.rayyildiz.sentiment_analyzer.models._
+import com.rayyildiz.sentiment_analyzer.models.ReqResponseModels._
+import com.rayyildiz.sentiment_analyzer.models.TextModels._
 import javax.inject.{Inject, Singleton}
 
 import scala.concurrent.duration._

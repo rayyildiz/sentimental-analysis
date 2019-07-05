@@ -7,6 +7,8 @@ import akka.http.scaladsl.model.{HttpMethods, HttpRequest, RequestEntity, Status
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{Sink, Source}
+import com.rayyildiz.sentiment_analyzer.models.ApplicationModels._
+import com.rayyildiz.sentiment_analyzer.models.ReqResponseModels._
 import com.rayyildiz.sentiment_analyzer.models._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Millis, Seconds, Span}
