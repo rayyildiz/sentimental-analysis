@@ -9,6 +9,7 @@ Implementation of sentimental analysis by using [Google Natural Language API](ht
 [![Akka Version](https://img.shields.io/badge/akka-2.5.23-blue.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
 [![Akka-Http Version](https://img.shields.io/badge/akka--http-10.1.8-orange.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/project/Dependencies.scala)
 [![GitHub license](https://img.shields.io/github/license/rayyildiz/sentimental-analysis.svg)](https://github.com/rayyildiz/sentimental-analysis/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frayyildiz%2Fsentimental-analysis.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frayyildiz%2Fsentimental-analysis?ref=badge_shield)
 
 
 This project was created for showing usage of:
@@ -133,3 +134,7 @@ Known Issues:
 ===
 
 * Used [jsoup](https://jsoup.org/) to clean text. JSoup has a bug and performance issue for large text.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frayyildiz%2Fsentimental-analysis.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frayyildiz%2Fsentimental-analysis?ref=badge_large)
