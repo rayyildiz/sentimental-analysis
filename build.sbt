@@ -1,4 +1,4 @@
-scalaVersion := "2.12.17"
+scalaVersion := "2.12.18"
 
 lazy val sentimentalAnalysis = (project in file("."))
   .settings(Settings.settings: _*)
