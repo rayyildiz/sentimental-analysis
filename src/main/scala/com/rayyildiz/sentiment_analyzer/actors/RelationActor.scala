@@ -11,7 +11,7 @@ class RelationActor(client: LanguageServiceClient, reply: ActorRef) extends Acto
 
   override def receive: Receive = {
     case text: String =>
-      val doc      = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
+      val doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
       val response = client.analyzeSyntax(doc, EncodingType.UTF8)
 
       val sentences = response.getSentencesList.asScala.map { sentences =>

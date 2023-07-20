@@ -14,7 +14,7 @@ import scala.concurrent.ExecutionContext
 
 object AkkaModule {
 
-  class ActorSystemProvider @Inject()(val config: Config, val injector: Injector) extends Provider[ActorSystem] {
+  class ActorSystemProvider @Inject() (val config: Config, val injector: Injector) extends Provider[ActorSystem] {
     override def get(): ActorSystem = {
       val system = ActorSystem("actor-system", config)
       GuiceAkkaExtension(system).initialize(injector)
@@ -22,14 +22,14 @@ object AkkaModule {
     }
   }
 
-  class ActorMaterializerProvider @Inject()(val config: Config, val injector: Injector, val system: ActorSystem) extends Provider[ActorMaterializer] {
+  class ActorMaterializerProvider @Inject() (val config: Config, val injector: Injector, val system: ActorSystem) extends Provider[ActorMaterializer] {
     override def get(): ActorMaterializer = {
       val materializer = ActorMaterializer()(system)
       materializer
     }
   }
 
-  class ExecutionContextProvider @Inject()(val config: Config, val injector: Injector, val system: ActorSystem) extends Provider[ExecutionContext] {
+  class ExecutionContextProvider @Inject() (val config: Config, val injector: Injector, val system: ActorSystem) extends Provider[ExecutionContext] {
     override def get(): ExecutionContext = {
       val executingContext = scala.concurrent.ExecutionContext.global
       executingContext

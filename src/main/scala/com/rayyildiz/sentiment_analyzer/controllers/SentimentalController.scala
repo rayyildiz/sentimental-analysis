@@ -14,26 +14,26 @@ import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class SentimentalController @Inject()(
+class SentimentalController @Inject() (
     private val system: ActorSystem
 )(implicit val executionContext: ExecutionContext) {
   lazy val languageApi: LanguageServiceClient = LanguageServiceClient.create()
-  lazy val translateApi: Translate            = TranslateOptions.getDefaultInstance.getService
+  lazy val translateApi: Translate = TranslateOptions.getDefaultInstance.getService
 
   implicit val timeout: Timeout = Timeout(20 seconds)
 
   def analysis(text: String): Future[AnalysisResponse] =
     for {
-      c   <- clean(text)
-      d   <- detect(text)
-      e   <- extract(text)
-      s   <- sentiment(text)
+      c <- clean(text)
+      d <- detect(text)
+      e <- extract(text)
+      s <- sentiment(text)
       det <- determination(text)
     } yield AnalysisResponse(c, d, e, s, det)
 
   def clean(text: String): Future[CleanTextResponse] = {
     implicit val timeout: Timeout = Timeout(2 seconds)
-    val nlp: ActorRef             = system.actorOf(NLPActor(languageApi, translateApi))
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
 
     (nlp ? CleanText(text)).mapTo[CleanTextActor.CleanedText].map(cleanedText => CleanTextResponse(cleanedText.text))
   }
@@ -49,7 +49,7 @@ class SentimentalController @Inject()(
 
   def extract(text: String): Future[ExtractResponse] = {
     implicit val timeout: Timeout = Timeout(5 seconds)
-    val nlp: ActorRef             = system.actorOf(NLPActor(languageApi, translateApi))
+    val nlp: ActorRef = system.actorOf(NLPActor(languageApi, translateApi))
 
     (nlp ? ExtractWord(text))
       .mapTo[ExtractorActor.ExtractedWords]

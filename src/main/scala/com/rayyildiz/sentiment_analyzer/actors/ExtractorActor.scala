@@ -10,7 +10,7 @@ class ExtractorActor(client: LanguageServiceClient, reply: ActorRef) extends Act
 
   override def receive: Receive = {
     case text: String =>
-      val doc     = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
+      val doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
       val request = AnalyzeEntitiesRequest.newBuilder().setDocument(doc).setEncodingType(EncodingType.UTF8).build()
 
       val list = client

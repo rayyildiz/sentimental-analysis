@@ -10,13 +10,13 @@ class SentimentActor(client: LanguageServiceClient, reply: ActorRef) extends Act
 
   override def receive: Receive = {
     case text: String =>
-      val doc      = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
+      val doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build()
       val response = client.analyzeSentiment(doc)
 
       val documentSentiment = response.getDocumentSentiment
 
       val list = response.getSentencesList.asScala.map { str =>
-        val sentiment           = str.getSentiment
+        val sentiment = str.getSentiment
         val feelingText: String = if (sentiment.getScore > 0) "POSITIVE" else "NEGATIVE"
 
         SentimentedSentences(

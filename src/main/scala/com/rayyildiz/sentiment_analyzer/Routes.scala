@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 import scala.concurrent.ExecutionContext
 
-class Routes @Inject()(
+class Routes @Inject() (
     private val middlewareRoutes: MiddlewareRoutes,
     private val restRoutes: RestRoutes
 )(private implicit val materializer: ActorMaterializer, implicit val executionContext: ExecutionContext)

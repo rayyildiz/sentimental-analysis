@@ -7,7 +7,7 @@ import com.rayyildiz.sentiment_analyzer.controllers.ApplicationController
 import com.rayyildiz.sentiment_analyzer.models.JsonSerialization
 
 @Singleton
-class MiddlewareRoutes @Inject()(
+class MiddlewareRoutes @Inject() (
     private val applicationController: ApplicationController
 ) extends JsonSerialization {
 

@@ -19,13 +19,13 @@ object BootApplication extends App {
     new AkkaModule()
   )
 
-  val config      = injector.getInstance(classOf[Config])
+  val config = injector.getInstance(classOf[Config])
   val hostAddress = config.getString("app.http.host")
-  val port        = config.getInt("app.http.port")
+  val port = config.getInt("app.http.port")
 
-  implicit val system: ActorSystem                  = injector.getInstance(classOf[ActorSystem])
-  implicit val executionContext: ExecutionContext   = injector.getInstance(classOf[ExecutionContext])
-  implicit val materializer: ActorMaterializer      = injector.getInstance(classOf[ActorMaterializer])
+  implicit val system: ActorSystem = injector.getInstance(classOf[ActorSystem])
+  implicit val executionContext: ExecutionContext = injector.getInstance(classOf[ExecutionContext])
+  implicit val materializer: ActorMaterializer = injector.getInstance(classOf[ActorMaterializer])
   implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
 
   val routes: Route = {

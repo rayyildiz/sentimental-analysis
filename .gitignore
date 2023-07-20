@@ -14,6 +14,7 @@ auto-save-list
 tramp
 .\#*
 
+.bsp/
 # Org-mode
 .org-id-locations
 *_archive

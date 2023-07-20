@@ -9,7 +9,7 @@ import com.rayyildiz.sentiment_analyzer.models._
 import com.rayyildiz.sentiment_analyzer.models.ReqResponseModels._
 
 @Singleton
-class RestRoutes @Inject()(
+class RestRoutes @Inject() (
     private val applicationController: ApplicationController,
     private val sentimentalController: SentimentalController
 ) extends JsonSerialization {
